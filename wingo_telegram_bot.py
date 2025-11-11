@@ -3,7 +3,7 @@ from collections import deque
 import os
 
 BOT_TOKEN = "7677423658:AAH-F8AP6XoZrleihOjjAXROzEEp-mq7_xA"
-bot = telebot.TeleBot "7677423658:AAH-F8AP6XoZrleihOjjAXROzEEp-mq7_xA"
+bot = "7677423658:AAH-F8AP6XoZrleihOjjAXROzEEp-mq7_xA"
 
 prediction_history = deque(maxlen=5)
 
