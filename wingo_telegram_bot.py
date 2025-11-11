@@ -2,9 +2,13 @@ import telebot
 from collections import deque
 import os
 
-BOT_TOKEN = "7677423658:AAH-F8AP6XoZrleihOjjAXROzEEp-mq7_xA"
-bot = os.getenv("7677423658:AAH-F8AP6XoZrleihOjjAXROzEEp-mq7_xA")
+# ✅ Load your bot token (use environment variable on Render for security)
+BOT_TOKEN = os.getenv("BOT_TOKEN", "7677423658:AAH-F8AP6XoZrleihOjjAXROzEEp-mq7_xA")
 
+# ✅ Create the bot instance correctly
+bot = telebot.TeleBot(BOT_TOKEN)
+
+# Store the last 5 predictions
 prediction_history = deque(maxlen=5)
 
 def modular_base_prediction(period_last3):
@@ -30,7 +34,7 @@ def ai_trend_adjusted_prediction(period_last3):
 
 @bot.message_handler(commands=["start"])
 def start(msg):
-    bot.reply_to(msg, "🔮 Wingo AI Modular Trend Bot Online! Send last 3 digits to get prediction.")
+    bot.reply_to(msg, "🔮 Wingo AI Modular Trend Bot Online!\nSend last 3 digits to get prediction.")
 
 @bot.message_handler(func=lambda m: True)
 def handle_message(msg):
@@ -41,4 +45,7 @@ def handle_message(msg):
     else:
         bot.reply_to(msg, "⚠️ Please send exactly 3 digits (e.g. 123).")
 
-bot.infinity_polling()
+if __name__ == "__main__":
+    print("🤖 Bot is running on Render...")
+    bot.infinity_polling(timeout=10, long_polling_timeout=5)
+
