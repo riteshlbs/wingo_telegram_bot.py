@@ -1,9 +1,3 @@
-# =========================================================
-# 🤖 WINGO AI MODULAR TREND BOT
-# Logic: Modular + Simple AI Trend Adjustment
-# Author: Ritesh Verma
-# =========================================================
-
 import telebot
 from collections import deque
 import os
