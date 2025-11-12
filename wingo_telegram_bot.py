@@ -87,4 +87,4 @@ def handle_message(msg):
 # =========================================================
 if __name__ == "__main__":
     print("🤖 Wingo Modular Bot is running on Render...")
-    bot.infinity_polling(timeout=10, long_polling_timeout=5)
+    bot.infinity_polling(timeout=60, long_polling_timeout=20)
