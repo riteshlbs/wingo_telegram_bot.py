@@ -1,9 +1,16 @@
+# =========================================================
+# 🤖 WINGO AI MODULAR TREND BOT (Render-Compatible)
+# Logic: Modular + Simple AI Trend Adjustment
+# =========================================================
+
 import telebot
 from collections import deque
 import os
+import threading
+from flask import Flask
 
 # ================================
-# 🔐 Secure BOT Token Management
+# 🔐 BOT Token Setup
 # ================================
 BOT_TOKEN = os.getenv("BOT_TOKEN", "7677423658:AAH-F8AP6XoZrleihOjjAXROzEEp-mq7_xA")
 bot = telebot.TeleBot(7677423658:AAH-F8AP6XoZrleihOjjAXROzEEp-mq7_xA)
@@ -74,8 +81,26 @@ def handle_message(msg):
         bot.reply_to(msg, "⚠️ Please send exactly *3 digits* (e.g. 123).", parse_mode="Markdown")
 
 # ================================
-# 🚀 Bot Runner
+# 🌐 Dummy Web Server (Render Fix)
+# ================================
+app = Flask(__name__)
+
+@app.route('/')
+def home():
+    return "🤖 Wingo Telegram Bot is running on Render!"
+
+def run_flask():
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
+
+# ================================
+# 🚀 Bot Runner (with Web Server)
 # ================================
 if __name__ == "__main__":
-    print("🤖 Wingo Modular Bot is running...")
+    print("🤖 Wingo Modular Bot running with Flask server...")
+
+    # Run Flask in background (to satisfy Render's port binding)
+    threading.Thread(target=run_flask).start()
+
+    # Start Telegram bot polling
     bot.infinity_polling(timeout=10, long_polling_timeout=5)
