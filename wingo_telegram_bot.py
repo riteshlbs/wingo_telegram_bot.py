@@ -9,10 +9,10 @@ from collections import deque
 import os
 
 # 🔐 Secure Token Handling
-BOT_TOKEN = os.getenv("BOT_TOKEN", "YOUR_BOT_TOKEN_HERE")
+BOT_TOKEN = os.getenv("BOT_TOKEN", "7677423658:AAH-F8AP6XoZrleihOjjAXROzEEp-mq7_xA")
 
 # Initialize bot
-bot = telebot.TeleBot(BOT_TOKEN)
+bot = telebot.TeleBot(7677423658:AAH-F8AP6XoZrleihOjjAXROzEEp-mq7_xA)
 
 # Store the last 5 results for trend balancing
 prediction_history = deque(maxlen=5)
