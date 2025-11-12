@@ -12,7 +12,7 @@ import os
 BOT_TOKEN = os.getenv("BOT_TOKEN", "7677423658:AAH-F8AP6XoZrleihOjjAXROzEEp-mq7_xA")
 
 # Initialize bot
-bot = telebot.TeleBot(7677423658:AAH-F8AP6XoZrleihOjjAXROzEEp-mq7_xA)
+bot = telebot.TeleBot("7677423658:AAH-F8AP6XoZrleihOjjAXROzEEp-mq7_xA")
 
 # Store the last 5 results for trend balancing
 prediction_history = deque(maxlen=5)
